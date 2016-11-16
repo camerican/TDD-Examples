@@ -1,0 +1,12 @@
+<p>
+  <strong>Body:</strong>
+  <%= @status.body %>
+</p>
+
+<p>
+  <strong>Dog:</strong>
+  <%= @status.dog_id %>
+</p>
+
+<%= link_to 'Edit', edit_status_path(@status) %> |
+<%= link_to 'Back', statuses_path %>

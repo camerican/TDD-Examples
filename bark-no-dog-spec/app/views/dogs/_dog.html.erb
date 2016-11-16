@@ -1,0 +1,18 @@
+<div class="dog">
+  <h3><%=link_to dog.name, dog_path(dog) %></h3>
+  <%=image_tag dog.avatar, class: "dog-photo" %>
+  <p>
+    <%=dog.location %>
+  </p>
+  <% if dog.statuses.present? %>
+    <h4>Recent Statuses</h4>
+    <% dog.statuses.last(4).each do |status| %>
+      <%=status.body %>
+      <br>
+      <%=status.created_at.strftime("%A, %d %b %Y %l:%M %p") %>
+    <% end %>
+  <% else %>
+    No recent status updates.
+  <% end %>
+</div>
+<br>

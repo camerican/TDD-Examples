@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Bark</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <h1 class="logo">
+    <%=link_to "BARK", root_path %>
+  </h1>
+  <nav>
+    <ul>
+      <% if current_dog %>
+        <li>
+          <%=link_to "Log Out", log_out_path, method: :delete %>
+        </li>
+      <% else %>
+        <li>
+          <%=link_to "Log In", log_in_path %>
+        </li>
+        <li>
+          <%=link_to "Sign Up", new_dog_path %>
+        </li>
+      <% end %>
+      <li>
+        <%=link_to "Dog News Feed", dogs_path %>
+      </li>
+      <li>
+        <%=link_to "My Profile", profile_path %>
+      </li>
+    </ul>
+  </nav>
+  <div class="flash-wrapper">
+    <% flash.each do |key, value| %>
+      <div class="flash <%=key %>">
+        <%=value %>
+      </div>
+    <% end %>
+  </div>
+  <%= yield %>
+
+</body>
+</html>

@@ -1,0 +1,9 @@
+<h1>All Teh Dogs</h1>
+
+<% @dogs.each do |dog| %>
+  <%= render "dog", dog: dog %>
+<% end %>
+
+<br>
+
+<%= link_to 'New Dog', new_dog_path %>

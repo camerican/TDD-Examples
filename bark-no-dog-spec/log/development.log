@@ -1,0 +1,501 @@
+  [1m[36m (1.6ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [1m[35m (0.1ms)[0m  select sqlite_version(*)
+  [1m[36m (0.8ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.4ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to CreateDogs (20140710201002)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  CREATE TABLE "dogs" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "email" varchar(255), "password_digest" varchar(255), "birthday" datetime, "city" varchar(255), "state" varchar(255), "newsletter" boolean, "avatar_file_name" varchar(255), "avatar_content_type" varchar(255), "avatar_file_size" integer, "avatar_updated_at" datetime, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20140710201002"]]
+  [1m[35m (0.7ms)[0m  commit transaction
+Migrating to CreateStatuses (20140711044454)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  CREATE TABLE "statuses" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "body" text, "dog_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20140711044454"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+
+
+Started GET "/" for 127.0.0.1 at 2016-11-16 10:46:02 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 1669ms (Views: 1654.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-11-16 10:46:04 -0500
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 13ms (Views: 11.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/dogs.css?body=1" for 127.0.0.1 at 2016-11-16 10:46:04 -0500
+
+
+Started GET "/assets/home.css?body=1" for 127.0.0.1 at 2016-11-16 10:46:04 -0500
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2016-11-16 10:46:04 -0500
+
+
+Started GET "/assets/statuses.css?body=1" for 127.0.0.1 at 2016-11-16 10:46:04 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2016-11-16 10:46:04 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2016-11-16 10:46:04 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2016-11-16 10:46:04 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2016-11-16 10:46:04 -0500
+
+
+Started GET "/assets/dogs.js?body=1" for 127.0.0.1 at 2016-11-16 10:46:04 -0500
+
+
+Started GET "/assets/home.js?body=1" for 127.0.0.1 at 2016-11-16 10:46:04 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2016-11-16 10:46:04 -0500
+
+
+Started GET "/assets/statuses.js?body=1" for 127.0.0.1 at 2016-11-16 10:46:04 -0500
+
+
+Started GET "/profile" for 127.0.0.1 at 2016-11-16 10:46:11 -0500
+Processing by DogsController#profile as HTML
+  Rendered dogs/_dog.html.erb (11.1ms)
+  Rendered dogs/profile.html.erb within layouts/application (36.6ms)
+Completed 500 Internal Server Error in 55ms
+
+ActionView::Template::Error (undefined method `name' for nil:NilClass):
+    1: <div class="dog">
+    2:   <h3><%=link_to dog.name, dog_path(dog) %></h3>
+    3:   <%=image_tag dog.avatar, class: "dog-photo" %>
+    4:   <p>
+    5:     <%=dog.location %>
+  app/views/dogs/_dog.html.erb:2:in `_app_views_dogs__dog_html_erb___411544036361318742_70190443714320'
+  app/views/dogs/profile.html.erb:1:in `_app_views_dogs_profile_html_erb___3228905325044218419_70190449754800'
+
+
+  Rendered /Users/ccrews/.rvm/gems/ruby-2.2.2/gems/actionpack-4.1.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.2ms)
+  Rendered /Users/ccrews/.rvm/gems/ruby-2.2.2/gems/actionpack-4.1.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.5ms)
+  Rendered /Users/ccrews/.rvm/gems/ruby-2.2.2/gems/actionpack-4.1.4/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (67.3ms)
+
+
+Started GET "/profile" for 127.0.0.1 at 2016-11-16 10:46:11 -0500
+Processing by DogsController#profile as HTML
+  Rendered dogs/_dog.html.erb (3.5ms)
+  Rendered dogs/profile.html.erb within layouts/application (5.6ms)
+Completed 500 Internal Server Error in 11ms
+
+ActionView::Template::Error (undefined method `name' for nil:NilClass):
+    1: <div class="dog">
+    2:   <h3><%=link_to dog.name, dog_path(dog) %></h3>
+    3:   <%=image_tag dog.avatar, class: "dog-photo" %>
+    4:   <p>
+    5:     <%=dog.location %>
+  app/views/dogs/_dog.html.erb:2:in `_app_views_dogs__dog_html_erb___411544036361318742_70190448341020'
+  app/views/dogs/profile.html.erb:1:in `_app_views_dogs_profile_html_erb___3228905325044218419_70190443402900'
+
+
+  Rendered /Users/ccrews/.rvm/gems/ruby-2.2.2/gems/actionpack-4.1.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.7ms)
+  Rendered /Users/ccrews/.rvm/gems/ruby-2.2.2/gems/actionpack-4.1.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /Users/ccrews/.rvm/gems/ruby-2.2.2/gems/actionpack-4.1.4/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (47.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-11-16 10:46:26 -0500
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 9ms (Views: 7.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/dogs.css?body=1" for 127.0.0.1 at 2016-11-16 10:46:26 -0500
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2016-11-16 10:46:26 -0500
+
+
+Started GET "/assets/home.css?body=1" for 127.0.0.1 at 2016-11-16 10:46:26 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2016-11-16 10:46:26 -0500
+
+
+Started GET "/assets/statuses.css?body=1" for 127.0.0.1 at 2016-11-16 10:46:26 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2016-11-16 10:46:26 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2016-11-16 10:46:26 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2016-11-16 10:46:26 -0500
+
+
+Started GET "/assets/dogs.js?body=1" for 127.0.0.1 at 2016-11-16 10:46:26 -0500
+
+
+Started GET "/assets/home.js?body=1" for 127.0.0.1 at 2016-11-16 10:46:26 -0500
+
+
+Started GET "/assets/statuses.js?body=1" for 127.0.0.1 at 2016-11-16 10:46:26 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2016-11-16 10:46:26 -0500
+
+
+Started GET "/dogs/new" for 127.0.0.1 at 2016-11-16 10:46:29 -0500
+Processing by DogsController#new as HTML
+  Rendered dogs/_form.html.erb (78.8ms)
+  Rendered dogs/new.html.erb within layouts/application (84.8ms)
+Completed 200 OK in 128ms (Views: 103.9ms | ActiveRecord: 0.8ms)
+
+
+Started POST "/dogs" for 127.0.0.1 at 2016-11-16 10:47:02 -0500
+Processing by DogsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"OuDpEb/p1LvYbTBNHvZGIk6yZBQ17dKnx82Xj0BIxhA=", "dog"=>{"name"=>"Watson", "email"=>"bark@dev.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "birthday(1i)"=>"2013", "birthday(2i)"=>"11", "birthday(3i)"=>"16", "city"=>"New York", "state"=>"New York", "newsletter"=>"1"}, "commit"=>"Create Dog"}
+Unpermitted parameters: password_confirmation
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mDog Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "dogs"  WHERE "dogs"."email" = 'bark@dev.com' LIMIT 1[0m
+Binary data inserted for `string` type on column `password_digest`
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "dogs" ("birthday", "city", "created_at", "email", "name", "newsletter", "password_digest", "state", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)  [["birthday", "2013-11-16 00:00:00.000000"], ["city", "New York"], ["created_at", "2016-11-16 15:47:02.602905"], ["email", "bark@dev.com"], ["name", "Watson"], ["newsletter", "t"], ["password_digest", "$2a$10$gLgWLnQDINHTdUXamnNZyOq3IbAvJGOm/36ETwJbZAx5UVTLwPsFy"], ["state", "New York"], ["updated_at", "2016-11-16 15:47:02.602905"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/dogs/1
+Completed 302 Found in 112ms (ActiveRecord: 1.8ms)
+
+
+Started GET "/dogs/1" for 127.0.0.1 at 2016-11-16 10:47:02 -0500
+Processing by DogsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mDog Load (0.3ms)[0m  SELECT  "dogs".* FROM "dogs"  WHERE "dogs"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mStatus Load (0.2ms)[0m  [1mSELECT "statuses".* FROM "statuses"  WHERE "statuses"."dog_id" = ?[0m  [["dog_id", 1]]
+  Rendered dogs/_dog.html.erb (39.1ms)
+  Rendered dogs/show.html.erb within layouts/application (42.6ms)
+Completed 200 OK in 61ms (Views: 58.1ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/assets/home.css?body=1" for 127.0.0.1 at 2016-11-16 10:47:02 -0500
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2016-11-16 10:47:02 -0500
+
+
+Started GET "/assets/statuses.css?body=1" for 127.0.0.1 at 2016-11-16 10:47:02 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2016-11-16 10:47:02 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2016-11-16 10:47:02 -0500
+
+
+Started GET "/assets/dogs.css?body=1" for 127.0.0.1 at 2016-11-16 10:47:02 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2016-11-16 10:47:02 -0500
+
+
+Started GET "/assets/dogs.js?body=1" for 127.0.0.1 at 2016-11-16 10:47:02 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2016-11-16 10:47:02 -0500
+
+
+Started GET "/assets/home.js?body=1" for 127.0.0.1 at 2016-11-16 10:47:02 -0500
+
+
+Started GET "/assets/statuses.js?body=1" for 127.0.0.1 at 2016-11-16 10:47:02 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2016-11-16 10:47:02 -0500
+
+
+Started GET "/images/original/missing.png" for 127.0.0.1 at 2016-11-16 10:47:03 -0500
+
+ActionController::RoutingError (No route matches [GET] "/images/original/missing.png"):
+  actionpack (4.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.1.4) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.4) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.4) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.4) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.4) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.4) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.4) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.4) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.4) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.4) lib/rails/engine.rb:514:in `call'
+  railties (4.1.4) lib/rails/application.rb:144:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/ccrews/.rvm/rubies/ruby-2.2.2/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
+  /Users/ccrews/.rvm/rubies/ruby-2.2.2/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
+  /Users/ccrews/.rvm/rubies/ruby-2.2.2/lib/ruby/2.2.0/webrick/server.rb:294:in `block in start_thread'
+
+
+  Rendered /Users/ccrews/.rvm/gems/ruby-2.2.2/gems/actionpack-4.1.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.6ms)
+  Rendered /Users/ccrews/.rvm/gems/ruby-2.2.2/gems/actionpack-4.1.4/lib/action_dispatch/middleware/templates/routes/_route.html.erb (5.6ms)
+  Rendered /Users/ccrews/.rvm/gems/ruby-2.2.2/gems/actionpack-4.1.4/lib/action_dispatch/middleware/templates/routes/_table.html.erb (3.8ms)
+  Rendered /Users/ccrews/.rvm/gems/ruby-2.2.2/gems/actionpack-4.1.4/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (135.6ms)
+
+
+Started GET "/log-in" for 127.0.0.1 at 2016-11-16 10:47:11 -0500
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.html.erb within layouts/application (2.9ms)
+Completed 200 OK in 20ms (Views: 18.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/log-in" for 127.0.0.1 at 2016-11-16 10:47:21 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"OuDpEb/p1LvYbTBNHvZGIk6yZBQ17dKnx82Xj0BIxhA=", "email"=>"bark@dev.com", "password"=>"[FILTERED]", "commit"=>"Save changes"}
+  [1m[35mDog Load (0.3ms)[0m  SELECT  "dogs".* FROM "dogs"  WHERE "dogs"."email" = 'bark@dev.com' LIMIT 1
+Redirected to http://localhost:3000/
+Completed 302 Found in 89ms (ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-11-16 10:47:21 -0500
+Processing by HomeController#index as HTML
+  [1m[36mDog Load (0.1ms)[0m  [1mSELECT  "dogs".* FROM "dogs"  WHERE "dogs"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered home/index.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 13ms (Views: 11.9ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/assets/dogs.css?body=1" for 127.0.0.1 at 2016-11-16 10:47:21 -0500
+
+
+Started GET "/assets/home.css?body=1" for 127.0.0.1 at 2016-11-16 10:47:21 -0500
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2016-11-16 10:47:21 -0500
+
+
+Started GET "/assets/statuses.css?body=1" for 127.0.0.1 at 2016-11-16 10:47:21 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2016-11-16 10:47:21 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2016-11-16 10:47:21 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2016-11-16 10:47:22 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2016-11-16 10:47:22 -0500
+
+
+Started GET "/assets/dogs.js?body=1" for 127.0.0.1 at 2016-11-16 10:47:22 -0500
+
+
+Started GET "/assets/home.js?body=1" for 127.0.0.1 at 2016-11-16 10:47:22 -0500
+
+
+Started GET "/assets/statuses.js?body=1" for 127.0.0.1 at 2016-11-16 10:47:22 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2016-11-16 10:47:22 -0500
+
+
+Started GET "/dogs" for 127.0.0.1 at 2016-11-16 10:47:29 -0500
+Processing by DogsController#index as HTML
+  [1m[35mDog Load (0.2ms)[0m  SELECT "dogs".* FROM "dogs"
+  [1m[36mStatus Load (0.2ms)[0m  [1mSELECT "statuses".* FROM "statuses"  WHERE "statuses"."dog_id" = ?[0m  [["dog_id", 1]]
+  Rendered dogs/_dog.html.erb (4.2ms)
+  Rendered dogs/index.html.erb within layouts/application (10.1ms)
+  [1m[35mDog Load (0.4ms)[0m  SELECT  "dogs".* FROM "dogs"  WHERE "dogs"."id" = ? LIMIT 1  [["id", 1]]
+Completed 200 OK in 52ms (Views: 50.1ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/images/original/missing.png" for 127.0.0.1 at 2016-11-16 10:47:29 -0500
+
+ActionController::RoutingError (No route matches [GET] "/images/original/missing.png"):
+  actionpack (4.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.1.4) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.4) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.4) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.4) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.4) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.4) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.4) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.4) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.4) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.4) lib/rails/engine.rb:514:in `call'
+  railties (4.1.4) lib/rails/application.rb:144:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/ccrews/.rvm/rubies/ruby-2.2.2/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
+  /Users/ccrews/.rvm/rubies/ruby-2.2.2/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
+  /Users/ccrews/.rvm/rubies/ruby-2.2.2/lib/ruby/2.2.0/webrick/server.rb:294:in `block in start_thread'
+
+
+  Rendered /Users/ccrews/.rvm/gems/ruby-2.2.2/gems/actionpack-4.1.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.7ms)
+  Rendered /Users/ccrews/.rvm/gems/ruby-2.2.2/gems/actionpack-4.1.4/lib/action_dispatch/middleware/templates/routes/_route.html.erb (2.2ms)
+  Rendered /Users/ccrews/.rvm/gems/ruby-2.2.2/gems/actionpack-4.1.4/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.7ms)
+  Rendered /Users/ccrews/.rvm/gems/ruby-2.2.2/gems/actionpack-4.1.4/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (81.5ms)
+
+
+Started GET "/profile" for 127.0.0.1 at 2016-11-16 10:47:32 -0500
+Processing by DogsController#profile as HTML
+  [1m[36mDog Load (0.5ms)[0m  [1mSELECT  "dogs".* FROM "dogs"  WHERE "dogs"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mStatus Load (0.1ms)[0m  SELECT "statuses".* FROM "statuses"  WHERE "statuses"."dog_id" = ?  [["dog_id", 1]]
+  Rendered dogs/_dog.html.erb (1.9ms)
+  Rendered dogs/profile.html.erb within layouts/application (4.5ms)
+Completed 200 OK in 27ms (Views: 16.4ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/images/original/missing.png" for 127.0.0.1 at 2016-11-16 10:47:32 -0500
+
+ActionController::RoutingError (No route matches [GET] "/images/original/missing.png"):
+  actionpack (4.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.1.4) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.4) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.4) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.4) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.4) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.4) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.4) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.4) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.4) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.4) lib/rails/engine.rb:514:in `call'
+  railties (4.1.4) lib/rails/application.rb:144:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/ccrews/.rvm/rubies/ruby-2.2.2/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
+  /Users/ccrews/.rvm/rubies/ruby-2.2.2/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
+  /Users/ccrews/.rvm/rubies/ruby-2.2.2/lib/ruby/2.2.0/webrick/server.rb:294:in `block in start_thread'
+
+
+  Rendered /Users/ccrews/.rvm/gems/ruby-2.2.2/gems/actionpack-4.1.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.3ms)
+  Rendered /Users/ccrews/.rvm/gems/ruby-2.2.2/gems/actionpack-4.1.4/lib/action_dispatch/middleware/templates/routes/_route.html.erb (8.2ms)
+  Rendered /Users/ccrews/.rvm/gems/ruby-2.2.2/gems/actionpack-4.1.4/lib/action_dispatch/middleware/templates/routes/_table.html.erb (2.4ms)
+  Rendered /Users/ccrews/.rvm/gems/ruby-2.2.2/gems/actionpack-4.1.4/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (86.7ms)
+
+
+Started GET "/dogs/1/statuses/new" for 127.0.0.1 at 2016-11-16 10:47:36 -0500
+Processing by StatusesController#new as HTML
+  Parameters: {"dog_id"=>"1"}
+  [1m[36mDog Load (0.5ms)[0m  [1mSELECT  "dogs".* FROM "dogs"  WHERE "dogs"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered statuses/_form.html.erb (29.3ms)
+  Rendered statuses/new.html.erb within layouts/application (42.9ms)
+Completed 200 OK in 65ms (Views: 55.9ms | ActiveRecord: 1.1ms)
+
+
+Started POST "/dogs/1/statuses" for 127.0.0.1 at 2016-11-16 10:47:49 -0500
+Processing by StatusesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"OuDpEb/p1LvYbTBNHvZGIk6yZBQ17dKnx82Xj0BIxhA=", "status"=>{"body"=>"Bark bark woof woof baaaark?"}, "commit"=>"Create Status", "dog_id"=>"1"}
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "statuses" ("body", "created_at", "dog_id", "updated_at") VALUES (?, ?, ?, ?)[0m  [["body", "Bark bark woof woof baaaark?"], ["created_at", "2016-11-16 15:47:49.645624"], ["dog_id", 1], ["updated_at", "2016-11-16 15:47:49.645624"]]
+  [1m[35m (0.7ms)[0m  commit transaction
+  [1m[36mDog Load (0.3ms)[0m  [1mSELECT  "dogs".* FROM "dogs"  WHERE "dogs"."id" = ? LIMIT 1[0m  [["id", 1]]
+Redirected to http://localhost:3000/dogs/1
+Completed 302 Found in 20ms (ActiveRecord: 1.7ms)
+
+
+Started GET "/dogs/1" for 127.0.0.1 at 2016-11-16 10:47:49 -0500
+Processing by DogsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mDog Load (0.2ms)[0m  SELECT  "dogs".* FROM "dogs"  WHERE "dogs"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mStatus Load (0.1ms)[0m  [1mSELECT "statuses".* FROM "statuses"  WHERE "statuses"."dog_id" = ?[0m  [["dog_id", 1]]
+  Rendered dogs/_dog.html.erb (2.3ms)
+  Rendered dogs/show.html.erb within layouts/application (3.7ms)
+  [1m[35mDog Load (0.1ms)[0m  SELECT  "dogs".* FROM "dogs"  WHERE "dogs"."id" = ? LIMIT 1  [["id", 1]]
+Completed 200 OK in 16ms (Views: 13.5ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/dogs.css?body=1" for 127.0.0.1 at 2016-11-16 10:47:49 -0500
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2016-11-16 10:47:49 -0500
+
+
+Started GET "/assets/statuses.css?body=1" for 127.0.0.1 at 2016-11-16 10:47:49 -0500
+
+
+Started GET "/assets/home.css?body=1" for 127.0.0.1 at 2016-11-16 10:47:49 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2016-11-16 10:47:49 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2016-11-16 10:47:49 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2016-11-16 10:47:49 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2016-11-16 10:47:49 -0500
+
+
+Started GET "/assets/dogs.js?body=1" for 127.0.0.1 at 2016-11-16 10:47:49 -0500
+
+
+Started GET "/assets/home.js?body=1" for 127.0.0.1 at 2016-11-16 10:47:49 -0500
+
+
+Started GET "/assets/statuses.js?body=1" for 127.0.0.1 at 2016-11-16 10:47:49 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2016-11-16 10:47:49 -0500
+
+
+Started GET "/images/original/missing.png" for 127.0.0.1 at 2016-11-16 10:47:50 -0500
+
+ActionController::RoutingError (No route matches [GET] "/images/original/missing.png"):
+  actionpack (4.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.1.4) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.4) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.4) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.4) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.4) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.4) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.4) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.4) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.4) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.4) lib/rails/engine.rb:514:in `call'
+  railties (4.1.4) lib/rails/application.rb:144:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/ccrews/.rvm/rubies/ruby-2.2.2/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
+  /Users/ccrews/.rvm/rubies/ruby-2.2.2/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
+  /Users/ccrews/.rvm/rubies/ruby-2.2.2/lib/ruby/2.2.0/webrick/server.rb:294:in `block in start_thread'
+
+
+  Rendered /Users/ccrews/.rvm/gems/ruby-2.2.2/gems/actionpack-4.1.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.2ms)
+  Rendered /Users/ccrews/.rvm/gems/ruby-2.2.2/gems/actionpack-4.1.4/lib/action_dispatch/middleware/templates/routes/_route.html.erb (2.9ms)
+  Rendered /Users/ccrews/.rvm/gems/ruby-2.2.2/gems/actionpack-4.1.4/lib/action_dispatch/middleware/templates/routes/_table.html.erb (9.3ms)
+  Rendered /Users/ccrews/.rvm/gems/ruby-2.2.2/gems/actionpack-4.1.4/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (106.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-11-16 10:48:05 -0500
+Processing by HomeController#index as HTML
+  [1m[36mDog Load (0.1ms)[0m  [1mSELECT  "dogs".* FROM "dogs"  WHERE "dogs"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered home/index.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 23ms (Views: 21.4ms | ActiveRecord: 0.1ms)
